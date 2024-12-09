@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Steam Redirect</title>
+    <script>
+        window.onload = function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            const gameId = urlParams.get('game_id');
+            const lobbyId = urlParams.get('lobby_id');
+
+            if (lobbyId && gameId) {
+                const steamUrl = `steam://joinlobby/${gameId}/${lobbyId}`;
+                window.location.href = steamUrl;
+                window.alert('Redirected to Steam. You may close this tab.');
+            } else {
+                window.alert('Missing required parameters: lobbyId and/or gameId');
+            }
+        };
+    </script>
+</head>
+<body>
+</body>
+</html>
